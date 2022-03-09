@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 /*-----------------------------
 
 Title : Player liste
@@ -6,13 +8,17 @@ author: Echiiro
 
 -----------------------------*/
 
-// --------------REQUIRES---------------
-require_once('../assets/helper.php');
-
 //Including header for a better code
-include("../header.php");
+include("../../header.php");
+
+// --------------REQUIRES---------------
+require_once('../../assets/helper.php');
+
+//Redirect if no Adimn
+redirectIfNotAdmin();
 
 // do a response message
+
 
 $message = "";
 $class = "";
@@ -43,15 +49,13 @@ if (isset($_GET['code'])) {
 // getting all post for a futur select
 
 $posts = getPosts();
-
-
 ?>
 
 <!-- Create a main for my app -->
 <main>
   <span class="<?= $class ?>"><?= $message ?></span>
   <!-- Create a form fo implément table on my BDD -->
-  <form action="traitement.php" method="POST">
+  <form action="./addPlayerAction.php" method="POST">
     <!-- Input for each columns -->
     <label for="firstName">Prénom</label>
     <input type="text" name="firstName" id="firstName" required>
@@ -67,18 +71,18 @@ $posts = getPosts();
 
     <label for="post">Poste</label>
     <select name="post" id="post">
-      <?php foreach ($posts as $key => $post) { ?>
+      <?php foreach ($posts as $key => $post) {
+        $key++; ?>
         <option value="<?= $key ?>"><?= $post["name"] ?></option>
       <?php } ?>
     </select>
 
-    <input type="submit" value="Créer ta table" id="submitBtn">
-    <span class="legend"> * obligatoir</span>
+    <input type="submit" value="Enregistrer le joueur" id="submitBtn">
 
   </form>
 </main>
 
 <?php
 //Including footer for a better code
-include("../footer.php");
+include("../../footer.php");
 ?>

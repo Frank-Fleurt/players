@@ -1,6 +1,12 @@
 <?php
+session_start();
 // Calls to my dffrents needs pages.
-require_once('./assets/secure.php');
+require_once('../../assets/secure.php');
+require_once('../../assets/helper.php');
+
+//redirect if not admin
+redirectIfNotAdmin();
+
 // check if I got my $_POST
 if (isset($_POST) && !empty($_POST)) {
 
@@ -15,7 +21,7 @@ if (isset($_POST) && !empty($_POST)) {
     $DBconnect = new PDO($db, $db_user, $db_pwd);
     // $DBconnect->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
   } catch (PDOException) {
-    header('Location: index.php?code=1');
+    header('Location: addPlayer.php?code=1');
   }
 
   // Secures my data
@@ -45,13 +51,11 @@ if (isset($_POST) && !empty($_POST)) {
     $req->execute($data);
 
     // return to my back page with good news
-    echo "ok";
-    // header('Location: index.php?code=0');
+    header('Location: addPlayer.php?code=0');
   } catch (PDOException $e) {
     // return my error code
-    echo $e;
-    // header('Location: index.php?code=2');
+    header('Location: addPlayer.php?code=2');
   }
 } else {
-  header('Location: index.php?code=3');
+  header('Location: addPlayer.php?code=3');
 }

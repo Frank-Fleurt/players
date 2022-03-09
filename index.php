@@ -1,4 +1,6 @@
 <?php
+include('header.php');
+
 
 if (isset($_POST['username']) && isset($_POST['password'])) {
 
@@ -13,7 +15,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
   }
 }
 
-include('header.php'); ?>
+?>
 <main>
   <span>
     Merci de vous connectez avec vos identifiants administateurs grace au formulaire suivant.
