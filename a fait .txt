@@ -1,0 +1,6 @@
+faire une page de admin
+avec une liste de joueurs
+un bouton de suppression qui apsse un booléan a 0 avec une modale de vérif
+
+afficher ceux avec moins de trois buts en rouge
+sauf le gardien 

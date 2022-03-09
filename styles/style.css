@@ -1,0 +1,22 @@
+form {
+  width: 500px;
+  display: grid;
+  grid-template-columns: 1fr;
+  margin: 10px;
+}
+label {
+  margin-top: 10px;
+}
+#submitBtn {
+  margin-top: 10px;
+}
+.legend {
+  font-style: italic;
+  color: grey;
+}
+.ok {
+  color: greenyellow;
+}
+.error {
+  color: red;
+}
